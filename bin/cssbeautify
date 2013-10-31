@@ -25,7 +25,7 @@
 
 /*jslint sloppy:true node:true */
 
-var fs, cssbeautify, fname, content, options, style;
+var fs, cssbeautify, fname, content, options;
 
 fs = require('fs');
 cssbeautify = require('cssbeautify');
@@ -33,16 +33,13 @@ cssbeautify = require('cssbeautify');
 function showUsage() {
     console.log('Usage:');
     console.log('   cssbeautify [options] style.css');
+    console.log('   curl http://example.com/style.css | cssbeautify [options]');
     console.log();
     console.log('Available options:');
     console.log();
     console.log('  -v, --version  Shows program version');
     console.log();
     process.exit(1);
-}
-
-if (process.argv.length <= 2) {
-    showUsage();
 }
 
 options = {};
@@ -67,17 +64,28 @@ process.argv.splice(2).forEach(function (entry) {
     }
 });
 
-if (typeof fname !== 'string') {
-    console.log('Error: no input file.');
-    process.exit(1);
-}
-
-try {
-    content = fs.readFileSync(fname, 'utf-8');
+function beautifyAndOutput(err, content) {
+    var style;
+    if (err) {
+        console.log('Error: ' + err.message);
+        process.exit(1);
+    }
     style = cssbeautify(content);
     console.log(style);
-} catch (e) {
-    console.log('Error: ' + e.message);
-    process.exit(1);
 }
 
+if (typeof fname !== 'string') {
+    content = '';
+    process.stdin.resume();
+    process.stdin.on('data', function(buf) {
+        content += buf;
+    });
+    process.stdin.on('error', function(err) {
+        beautifyAndOutput(err);
+    });
+    process.stdin.on('end', function() {
+        beautifyAndOutput(null, content);
+    });
+} else {
+    fs.readFile(fname, 'utf-8', beautifyAndOutput);
+}

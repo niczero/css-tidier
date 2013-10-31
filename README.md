@@ -51,6 +51,15 @@ var beautified = cssbeautify('menu{opacity:.7}', {
 });
 ```
 
+## Command line use ##
+
+```
+npm install -g cssbeautify
+cssbeautify style.css # beautified CSS is output to console
+cssbeautify style.css >style.beautified.css # write to file
+curl http://example.com/style.css | cssbeautify # beautify stdin
+```
+
 ## Contributing ##
 
 Contributions are welcomed! Please read the [Contribution Guide](https://github.com/senchalabs/cssbeautify/blob/master/CONTRIBUTING.md) for more info.
