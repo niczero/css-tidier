@@ -458,7 +458,7 @@
         return formatted;
     }
 
-    if (typeof exports !== 'undefined') {
+    if (typeof exports !== 'undefined' && typeof process !== 'undefined') {
         // Node.js module.
         module.exports = exports = cssbeautify;
     } else if (typeof window === 'object') {
