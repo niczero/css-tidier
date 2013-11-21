@@ -453,7 +453,7 @@
             formatted += ch;
         }
 
-        formatted = blocks.join('') + formatted;
+        formatted = blocks.join('') + trimRight(formatted);
 
         return formatted;
     }
