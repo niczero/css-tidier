@@ -64,16 +64,6 @@ process.argv.splice(2).forEach(function (entry) {
     }
 });
 
-function beautifyAndOutput(err, content) {
-    var style;
-    if (err) {
-        console.log('Error: ' + err.message);
-        process.exit(1);
-    }
-    style = cssbeautify(content);
-    console.log(style);
-}
-
 if (typeof fname !== 'string') {
     content = '';
     process.stdin.resume();
@@ -81,10 +71,11 @@ if (typeof fname !== 'string') {
         content += buf;
     });
     process.stdin.on('error', function(err) {
-        beautifyAndOutput(err);
+        console.error('Error: ' + err.message);
+        process.exit(1);
     });
     process.stdin.on('end', function() {
-        beautifyAndOutput(null, content);
+        console.log(cssbeautify(content, options));
     });
 } else {
     fs.readFile(fname, 'utf-8', beautifyAndOutput);
