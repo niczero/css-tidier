@@ -1,6 +1,6 @@
 # Contribution Guide
 
-This page describes how to contribute changes to CSS Beautify.
+This page describes how to contribute changes to CSS Tidier.
 
 Please do not create a pull request without reading this guide first.  Failure
 to do so may result in the pull request being rejected.

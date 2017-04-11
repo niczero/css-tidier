@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2011--2013 Sencha Inc.
+ Copyright (C) 2011--3 Sencha Inc.
  Copyright (C) 2017 Nic Sandfield
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -21,7 +21,7 @@
  SOFTWARE.
 */
 
-var tests = {
+let tests = {
 
   'Simple style': {
     input: [

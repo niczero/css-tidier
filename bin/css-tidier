@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- Copyright (C) 2012 Sencha Inc.
+ Copyright (C) 2011--3 Sencha Inc.
  Copyright (C) 2017 Nic Sandfield
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,16 +24,16 @@
 
 /*jslint sloppy:true node:true */
 
-var fs, path, cssbeautify, fname, content, options;
+let fs, path, css-tidier, fname, content, options;
 
 fs = require('fs');
 path = require('path');
-cssbeautify = require('' + path.join(__dirname, '..', 'cssbeautify.js'));
+css-tidier = require('' + path.join(__dirname, '..', 'css-tidier.js'));
 
 function showUsage() {
   console.log('Usage:');
-  console.log('   cssbeautify [options] [file]');
-  console.log('   curl http://example.com/style.css | cssbeautify [options]');
+  console.log('   css-tidier [options] [file]');
+  console.log('   curl http://example.com/style.css | css-tidier [options]');
   console.log();
   console.log('Available options:');
   console.log();
@@ -62,7 +62,7 @@ process.argv.splice(2).forEach(function (entry) {
   }
   else if (entry === '-v' || entry === '--version') {
     // Keep in sync with package.json
-    console.log('CSS Beautify version 0.4.0');
+    console.log('CSS Tidier version 1.0.0');
     console.log();
     process.exit(0);
   }
@@ -98,7 +98,7 @@ if (typeof fname !== 'string') {
     content += buf;
   });
   process.stdin.on('end', function() {
-    console.log(cssbeautify(content, options));
+    console.log(css-tidier(content, options));
   });
   process.stdin.on('error', function(err) {
     console.error('Error: ' + err.message);
@@ -107,5 +107,5 @@ if (typeof fname !== 'string') {
 }
 else {
   content = fs.readFileSync(fname, 'utf-8');
-  console.log(cssbeautify(content, options));
+  console.log(css-tidier(content, options));
 }

@@ -1,22 +1,22 @@
 {
-  "name": "cssbeautify",
-  "description": "Reindent and reformat CSS.",
-  "version": "0.4.0",
-  "homepage": "http://niczero.github.io/cssbeautify",
+  "name": "css-tidier",
+  "description": "Reformat CSS stylesheet, for consistent, readable declarations.",
+  "version": "1.0.0",
+  "homepage": "http://niczero.github.io/css-tidier",
   "author": {
     "name": "Nic Sandfield",
     "email": "niczero@wow.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/niczero/cssbeautify"
+    "url": "https://github.com/niczero/css-tidier"
   },
   "bugs": {
-    "url": "https://github.com/niczero/cssbeautify/issues"
+    "url": "https://github.com/niczero/css-tidier/issues"
   },
   "license": "MIT",
-  "main": "cssbeautify.js",
-  "bin": "bin/cssbeautify",
+  "main": "css-tidier.js",
+  "bin": "bin/css-tidier",
   "engines": {
     "node": "*"
   },
@@ -25,8 +25,8 @@
   },
   "keywords": [
     "css",
-    "cssbeautify",
-    "formatter"
+    "formatter",
+    "prettyprinter"
   ],
   "files": [
     "bin"

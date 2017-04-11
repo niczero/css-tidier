@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2011--2013 Sencha Inc.
+ Copyright (C) 2011--3 Sencha Inc.
  Copyright (C) 2017 Nic Sandfield
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -28,7 +28,7 @@
 
   'use strict';
 
-  function cssbeautify(style, opt) {
+  function css-tidier(style, opt) {
 
     let options, index = 0, length = style.length, blocks, formatted = '', ch,
         ch2, str, state, State, depth, quote, comment, trimRight;
@@ -454,11 +454,11 @@
 
   if (typeof exports !== 'undefined' && typeof process !== 'undefined') {
     // Node.js module.
-    module.exports = exports = cssbeautify;
+    module.exports = exports = css-tidier;
   }
   else if (typeof window === 'object') {
     // Browser loading.
-    window.cssbeautify = cssbeautify;
+    window.css-tidier = css-tidier;
   }
 
 }());

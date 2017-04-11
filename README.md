@@ -1,6 +1,6 @@
-# CSS Beautify
+# CSS Tidier
 
-CSS Beautify is a JavaScript implementation of reindenter and reformatter for
+CSS Tidier is a JavaScript implementation of reindenter and reformatter for
 [CSS](http://www.w3.org/Style/CSS/) stylesheets.
 
 Given the following style:
@@ -9,7 +9,7 @@ Given the following style:
 menu{color:red} navigation{background-color:#333}
 ```
 
-CSS Beautify will produce:
+CSS Tidier will produce:
 
 ```css
 menu {
@@ -21,21 +21,22 @@ navigation {
 }
 ```
 
-Try it online at [cssbeautify.com](http://cssbeautify.com).  For the command-line
-use, install Node.js [cssbeautify](https://npmjs.org/package/cssbeautify)
-package.
+Try it online at [github css-tidier](https://niczero.github.io/css-tidier).  For
+the command-line use, install Node.js
+[css-tidier](https://npmjs.org/package/css-tidier) package.
 
-For more examples, see also its [test suite](http://cssbeautify.com/test/).
+For more examples, see also its [test
+suite](http://niczero.github.io/css-tidier/test).
 
-## Using cssbeautify() function
+## Using css-tidier() function
 
-Since CSS Beautify is written in pure JavaScript, it can run anywhere that
+Since CSS Tidier is written in pure JavaScript, it can run anywhere that
 JavaScript can run.
 
 The API is very simple:
 
 ```javascript
-var result = cssbeautify(style, options);
+var result = css-tidier(style, options);
 ```
 
 **options** is an optional object to adjust the formatting.  Known options so
@@ -50,7 +51,7 @@ far are:
 Example call:
 
 ```javascript
-var beautified = cssbeautify('menu{opacity:.7}', {
+var tidied = css-tidier('menu{opacity:.7}', {
     indent: '  ',
     openbrace: 'separate-line',
     autosemicolon: true
@@ -60,21 +61,21 @@ var beautified = cssbeautify('menu{opacity:.7}', {
 ## Command line use
 
 ```
-npm install -g cssbeautify
-cssbeautify style.css # beautified CSS is output to console
-cssbeautify style.css >style.beautified.css # write to file
-curl http://example.com/style.css | cssbeautify # beautify stdin
+npm install -g css-tidier
+css-tidier style.css # tidied CSS is output to console
+css-tidier style.css >style.tidied.css # write to file
+curl http://example.com/style.css | css-tidier # tidy from stdin
 ```
 
 ## Contributing
 
 Contributions are welcome.  Please read the [Contribution
-Guide](https://github.com/niczero/cssbeautify/blob/master/CONTRIBUTING.md)
+Guide](https://github.com/niczero/css-tidier/blob/master/CONTRIBUTING.md)
 for more info.
 
 ## License
 
-Copyright (C) 2011--2013 Sencha Inc.
+Copyright (C) 2011--3 Sencha Inc.
 Copyright (C) 2017 Nic Sandfield
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
