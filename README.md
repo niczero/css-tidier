@@ -71,7 +71,17 @@ curl http://example.com/style.css | css-tidier # tidy from stdin
 
 Contributions are welcome.  Please read the [Contribution
 Guide](https://github.com/niczero/css-tidier/blob/master/CONTRIBUTING.md)
-for more info.
+for more info.  Thanks to the following people for getting us here.
+
+  * Ariya Hidayat <ariya@sencha.com> https://github.com/senchalabs
+  * Bart Nagel <bart@tremby.net> https://github.com/tremby
+  * Canop <cano.petrole@gmail.com> https://canop.github.io
+  * Faraz Yashar <faraz.yashar@gmail.com> https://github.com/fny
+  * Jarred Nicholls <jarred@sencha.com> https://github.com/senchalabs
+  * Joerg Sonnenberger <joerg@bec.de> https://github.com/jsonn
+  * Michael Succi <michaelsucci@gmail.com> https://github.com/kb19
+  * Nate Eagleson <nate@nateeag.com> https://github.com/NateEag
+  * Nic Sandfield <niczero@wow.com> https://niczero.github.io
 
 ## License
 
