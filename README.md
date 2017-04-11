@@ -1,6 +1,7 @@
-# CSS Beautify #
+# CSS Beautify
 
-CSS Beautify is a JavaScript implementation of reindenter and reformatter for styles written in [CSS](http://www.w3.org/Style/CSS/).
+CSS Beautify is a JavaScript implementation of reindenter and reformatter for
+[CSS](http://www.w3.org/Style/CSS/) stylesheets.
 
 Given the following style:
 
@@ -20,14 +21,16 @@ navigation {
 }
 ```
 
-Try it online at [cssbeautify.com](http://cssbeautify.com). For the
-command-line use, install Node.js [cssbeautify](https://npmjs.org/package/cssbeautify) package.
+Try it online at [cssbeautify.com](http://cssbeautify.com).  For the command-line
+use, install Node.js [cssbeautify](https://npmjs.org/package/cssbeautify)
+package.
 
 For more examples, see also its [test suite](http://cssbeautify.com/test/).
 
-## Using cssbeautify() function ##
+## Using cssbeautify() function
 
-Since CSS Beautify is written in pure JavaScript, it can run anywhere that JavaScript can run.
+Since CSS Beautify is written in pure JavaScript, it can run anywhere that
+JavaScript can run.
 
 The API is very simple:
 
@@ -35,11 +38,14 @@ The API is very simple:
 var result = cssbeautify(style, options);
 ```
 
-**options** is an optional object to adjust the formatting. Known options so far are:
+**options** is an optional object to adjust the formatting.  Known options so
+far are:
 
-  *  <code>indent</code> is a string used for the indentation of the declaration (default is 4 spaces)
-  *  <code>openbrace</code> defines the placement of open curly brace, either *end-of-line* (default) or *separate-line*.
-  *  <code>autosemicolon</code> always inserts a semicolon after the last ruleset (default is *false*)
+  *  <code>autosemicolon</code> always inserts a semicolon after the last
+     ruleset (default is 'false')
+  *  <code>braceonnextline</code> defines the placement of open curly brace.
+  *  <code>indent</code> is a string used for the indentation of the declaration
+     (default is 2 spaces)
 
 Example call:
 
@@ -51,7 +57,7 @@ var beautified = cssbeautify('menu{opacity:.7}', {
 });
 ```
 
-## Command line use ##
+## Command line use
 
 ```
 npm install -g cssbeautify
@@ -60,29 +66,30 @@ cssbeautify style.css >style.beautified.css # write to file
 curl http://example.com/style.css | cssbeautify # beautify stdin
 ```
 
-## Contributing ##
+## Contributing
 
-Contributions are welcomed! Please read the [Contribution Guide](https://github.com/senchalabs/cssbeautify/blob/master/CONTRIBUTING.md) for more info.
+Contributions are welcome.  Please read the [Contribution
+Guide](https://github.com/niczero/cssbeautify/blob/master/CONTRIBUTING.md)
+for more info.
 
-## License ##
+## License
 
-Copyright (C) 2012 Sencha Inc.
-Copyright (C) 2011 Sencha Inc.
+Copyright (C) 2011--2013 Sencha Inc.
+Copyright (C) 2017 Nic Sandfield
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /*
  Copyright (C) 2012 Sencha Inc.
-
- Author: Ariya Hidayat.
+ Copyright (C) 2017 Nic Sandfield
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,61 +24,88 @@
 
 /*jslint sloppy:true node:true */
 
-var fs, cssbeautify, fname, content, options;
+var fs, path, cssbeautify, fname, content, options;
 
 fs = require('fs');
-cssbeautify = require('cssbeautify');
+path = require('path');
+cssbeautify = require('' + path.join(__dirname, '..', 'cssbeautify.js'));
 
 function showUsage() {
-    console.log('Usage:');
-    console.log('   cssbeautify [options] style.css');
-    console.log('   curl http://example.com/style.css | cssbeautify [options]');
-    console.log();
-    console.log('Available options:');
-    console.log();
-    console.log('  --indent=<val> Indent content with string <val>');
-    console.log('  -v, --version  Shows program version');
-    console.log();
-    process.exit(1);
+  console.log('Usage:');
+  console.log('   cssbeautify [options] [file]');
+  console.log('   curl http://example.com/style.css | cssbeautify [options]');
+  console.log();
+  console.log('Available options:');
+  console.log();
+  console.log('  --autosemicolon   Ensure property values end in a semicolon');
+  console.log('  --braceonnextline   Put open braces on the next line');
+  console.log('  -h, --help      Shows these notes');
+  console.log('  --indent=<s>    Indent content with string <s>');
+  console.log('  --separateselectors Put each selector on its own line');
+  console.log('  -v, --version     Shows program version');
+  console.log('  file        CSS file to read instead of STDIN');
+  console.log();
+  process.exit(1);
 }
 
-options = {};
+options = {
+  autosemicolon: false,
+  braceonnextline: false,
+  indent: '  ',
+  separateselectors: false,
+};
 
 process.argv.splice(2).forEach(function (entry) {
 
-    if (entry === '-h' || entry === '--help') {
-        showUsage();
-    } else if (entry === '-v' || entry === '--version') {
-        // Keep in sync with package.json
-        console.log('CSS Beautify version 0.3.0');
-        console.log();
-        process.exit(0);
-    } else if (entry.slice(0,9) === '--indent=') {
-        options.indent = entry.slice(9);
-    } else if (entry.slice(0, 2) === '--') {
-        console.log('Error: unknown option ' + entry + '.');
-        process.exit(1);
-    } else if (typeof fname === 'string') {
-        console.log('Error: more than one input file.');
-        process.exit(1);
-    } else {
-        fname = entry;
-    }
+  if (entry === '-h' || entry === '--help') {
+    showUsage();
+  }
+  else if (entry === '-v' || entry === '--version') {
+    // Keep in sync with package.json
+    console.log('CSS Beautify version 0.4.0');
+    console.log();
+    process.exit(0);
+  }
+  else if (entry === '--autosemicolon') {
+    options.autosemicolon = true;
+  }
+  else if (entry === '--braceonnextline') {
+    options.braceonnextline = true;
+  }
+  else if (entry.slice(0,9) === '--indent=') {
+    options.indent = entry.slice(9);
+  }
+  else if (entry === '--separateselectors') {
+    options.separateselectors = true;
+  }
+  else if (entry.slice(0, 2) === '--') {
+    console.error('Error: unknown option ' + entry + '.');
+    process.exit(1);
+  }
+  else if (typeof fname === 'string') {
+    console.error('Error: more than one input file.');
+    process.exit(1);
+  }
+  else {
+    fname = entry;
+  }
 });
 
 if (typeof fname !== 'string') {
-    content = '';
-    process.stdin.resume();
-    process.stdin.on('data', function(buf) {
-        content += buf;
-    });
-    process.stdin.on('error', function(err) {
-        console.error('Error: ' + err.message);
-        process.exit(1);
-    });
-    process.stdin.on('end', function() {
-        console.log(cssbeautify(content, options));
-    });
-} else {
-    fs.readFile(fname, 'utf-8', beautifyAndOutput);
+  content = '';
+  process.stdin.resume();
+  process.stdin.on('data', function(buf) {
+    content += buf;
+  });
+  process.stdin.on('end', function() {
+    console.log(cssbeautify(content, options));
+  });
+  process.stdin.on('error', function(err) {
+    console.error('Error: ' + err.message);
+    process.exit(1);
+  });
+}
+else {
+  content = fs.readFileSync(fname, 'utf-8');
+  console.log(cssbeautify(content, options));
 }
